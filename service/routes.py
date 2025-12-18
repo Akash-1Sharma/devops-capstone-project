@@ -149,3 +149,29 @@ def check_content_type(media_type):
         status.HTTP_415_UNSUPPORTED_MEDIA_TYPE,
         f"Content-Type must be {media_type}",
     )
+
+######################################################################
+# ERROR HANDLERS
+######################################################################
+@app.errorhandler(status.HTTP_405_METHOD_NOT_ALLOWED)
+def method_not_allowed(error):
+    """Method Not Allowed"""
+    return (
+        jsonify(
+            status=status.HTTP_405_METHOD_NOT_ALLOWED,
+            error="Method Not Allowed",
+            message=str(error),
+        ),
+        status.HTTP_405_METHOD_NOT_ALLOWED,
+    )
+@app.errorhandler(status.HTTP_405_METHOD_NOT_ALLOWED)
+def method_not_allowed(error):
+    """Method Not Allowed"""
+    return (
+        jsonify(
+            status=status.HTTP_405_METHOD_NOT_ALLOWED,
+            error="Method Not Allowed",
+            message=str(error),
+        ),
+        status.HTTP_405_METHOD_NOT_ALLOWED,
+    )
