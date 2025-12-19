@@ -62,6 +62,8 @@ def create_accounts():
 ######################################################################
 
 # ... place you code here to LIST accounts ...
+
+
 @app.route("/accounts", methods=["GET"])
 def list_accounts():
     """
@@ -75,6 +77,7 @@ def list_accounts():
 
     app.logger.info("Returning %d accounts", len(results))
     return jsonify(results), status.HTTP_200_OK
+
 
 ######################################################################
 # READ AN ACCOUNT
@@ -100,6 +103,8 @@ def get_account(account_id):
 ######################################################################
 
 # ... place you code here to UPDATE an account ...
+
+
 @app.route("/accounts/<int:account_id>", methods=["PUT"])
 def update_account(account_id):
     """
@@ -121,6 +126,8 @@ def update_account(account_id):
 ######################################################################
 
 # ... place you code here to DELETE an account ...
+
+
 @app.route("/accounts/<int:account_id>", methods=["DELETE"])
 def delete_account(account_id):
     """
@@ -150,20 +157,10 @@ def check_content_type(media_type):
         f"Content-Type must be {media_type}",
     )
 
+
 ######################################################################
 # ERROR HANDLERS
 ######################################################################
-@app.errorhandler(status.HTTP_405_METHOD_NOT_ALLOWED)
-def method_not_allowed(error):
-    """Method Not Allowed"""
-    return (
-        jsonify(
-            status=status.HTTP_405_METHOD_NOT_ALLOWED,
-            error="Method Not Allowed",
-            message=str(error),
-        ),
-        status.HTTP_405_METHOD_NOT_ALLOWED,
-    )
 @app.errorhandler(status.HTTP_405_METHOD_NOT_ALLOWED)
 def method_not_allowed(error):
     """Method Not Allowed"""
